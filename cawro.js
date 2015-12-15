@@ -103,6 +103,11 @@ var cw_ghostReplayInterval = null;
 
 var distanceMeter = document.getElementById("distancemeter");
 
+/**
+ * The last given ID of a gene.
+ */
+var geneId = 0;
+
 var leaderPosition = new Object();
 leaderPosition.x = 0;
 leaderPosition.y = 0;
@@ -148,7 +153,9 @@ cw_Car.prototype.__constructor = function(car_def) {
   this.is_elite = car_def.is_elite;
   this.healthBar = document.getElementById("health"+car_def.index).style;
   this.healthBarText = document.getElementById("health"+car_def.index).nextSibling.nextSibling;
-  this.healthBarText.innerHTML = car_def.index;
+  this.healthBarText.innerHTML = car_def.index.toString();
+  this.healthBarGene = document.getElementById("health"+car_def.index).nextSibling.nextSibling.nextSibling.nextSibling;
+  this.healthBarGene.innerHTML = printGeneId(car_def.genome);
   this.minimapmarker = document.getElementById("bar"+car_def.index);
 
   if(this.is_elite) {
@@ -312,6 +319,8 @@ function cw_createWheel(radius, density) {
 function cw_createRandomGene() {
   var gene_def = new Object();
   
+  gene_def.id = geneId++;
+  
   gene_def.wheel_radius_1  = 0.0;
   gene_def.wheel_density_1 = 0.0;
   gene_def.wheel_vertex_1  = 0.0;
@@ -357,6 +366,18 @@ function cw_createRandomGene() {
   if(Math.random()<0.1) gene_def.vertex_list_C   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
 
   return gene_def;
+}
+
+function printGeneId(genome) {
+	var str = genome.length.toString()+"[";
+	var comma = false;
+	for(var i=0; i<genome.length; i++) {
+		if(comma) str += ",";
+		str += genome[i].id.toString();
+		comma=true;
+	}
+	str += "]";
+	return str;
 }
 
 function cw_genomeToCarDef(genome) {
@@ -869,6 +890,7 @@ function simulationStep() {
     position = cw_carArray[k].getPosition();
     cw_carArray[k].minimapmarker.style.left = Math.round((position.x+5) * minimapscale) + "px";
     cw_carArray[k].healthBar.width = Math.round((cw_carArray[k].health/max_car_health)*100) + "%";
+    cw_carArray[k].healthBarGene.innerHTML = printGeneId(cw_carArray[k].car_def.genome);
     if(cw_carArray[k].checkDeath()) {
       cw_carArray[k].kill();
       cw_deadCars++;
