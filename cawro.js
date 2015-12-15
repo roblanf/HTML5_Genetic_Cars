@@ -343,27 +343,27 @@ function cw_createRandomGene() {
   gene_def.vertex_list_B   = 0.0;
   gene_def.vertex_list_C   = 0.0;
   
-  if(Math.random()<0.1) gene_def.wheel_radius_1  = (Math.random()*2.0*wheelMaxRadius-wheelMaxRadius);
-  if(Math.random()<0.1) gene_def.wheel_density_1 = (Math.random()*2.0*wheelMaxDensity-wheelMaxDensity);
+  if(Math.random()<0.1) gene_def.wheel_radius_1  = (Math.random()*1.5*wheelMaxRadius-(wheelMaxRadius*0.5));
+  if(Math.random()<0.1) gene_def.wheel_density_1 = (Math.random()*1.5*wheelMaxDensity-(wheelMaxDensity*0.5));
   if(Math.random()<0.1) gene_def.wheel_vertex_1  = Math.floor(Math.random()*8);
-  if(Math.random()<0.1) gene_def.wheel_radius_2  = (Math.random()*2.0*wheelMaxRadius-wheelMaxRadius);
-  if(Math.random()<0.1) gene_def.wheel_density_2 = (Math.random()*2.0*wheelMaxDensity-wheelMaxDensity);
+  if(Math.random()<0.1) gene_def.wheel_radius_2  = (Math.random()*1.5*wheelMaxRadius-(wheelMaxRadius*0.5));
+  if(Math.random()<0.1) gene_def.wheel_density_2 = (Math.random()*1.5*wheelMaxDensity-(wheelMaxDensity*0.5));
   if(Math.random()<0.1) gene_def.wheel_vertex_2  = Math.floor(Math.random()*8);
   
-  if(Math.random()<0.1) gene_def.chassis_density = (Math.random()*2.0*chassisMaxDensity-chassisMaxDensity);
+  if(Math.random()<0.1) gene_def.chassis_density = (Math.random()*1.5*chassisMaxDensity-(chassisMaxDensity*0.5));
 
-  if(Math.random()<0.1) gene_def.vertex_list_1   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_2   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_3   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_4   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_5   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_6   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_7   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_8   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_9   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_A   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_B   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
-  if(Math.random()<0.1) gene_def.vertex_list_C   = (Math.random()*2.0*chassisMaxAxis-chassisMaxAxis);
+  if(Math.random()<0.1) gene_def.vertex_list_1   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_2   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_3   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_4   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_5   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_6   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_7   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_8   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_9   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_A   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_B   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
+  if(Math.random()<0.1) gene_def.vertex_list_C   = (Math.random()*1.5*chassisMaxAxis-(chassisMaxAxis*0.5));
 
   return gene_def;
 }
@@ -385,12 +385,12 @@ function cw_genomeToCarDef(genome) {
   var wheel_radius_2  = 0.0;
   var wheel_density_1 = 0.0;
   var wheel_density_2 = 0.0;
-  var wheel_vertex_vote1 = new Array();
-  var wheel_vertex_vote2 = new Array();
-  for(var i=0; i<8; i++) {
-    wheel_vertex_vote1[i] = 0;
-    wheel_vertex_vote2[i] = 0;
-   }
+  //var wheel_vertex_vote1 = new Array();
+  //var wheel_vertex_vote2 = new Array();
+  //for(var i=0; i<8; i++) {
+  //  wheel_vertex_vote1[i] = 0;
+  //  wheel_vertex_vote2[i] = 0;
+  // }
   var chassis_density = 0.0;
   var vertex_list_1   = 0.0;
   var vertex_list_2   = 0.0;
@@ -410,8 +410,8 @@ function cw_genomeToCarDef(genome) {
   	wheel_radius_2 += genome[i].wheel_radius_2;
   	wheel_density_1 += genome[i].wheel_density_1;
   	wheel_density_2 += genome[i].wheel_density_2;
-  	wheel_vertex_vote1[genome[i].wheel_vertex_1]++;
-  	wheel_vertex_vote2[genome[i].wheel_vertex_2]++;
+  	//wheel_vertex_vote1[genome[i].wheel_vertex_1]++;
+  	//wheel_vertex_vote2[genome[i].wheel_vertex_2]++;
   	chassis_density += genome[i].chassis_density;
   	vertex_list_1 += genome[i].vertex_list_1;
   	vertex_list_2 += genome[i].vertex_list_2;
@@ -435,12 +435,12 @@ function cw_genomeToCarDef(genome) {
   if(wheel_radius_2<wheelMinRadius) wheel_radius_2 = wheelMinRadius;
   if(wheel_density_1<wheelMinDensity) wheel_density_1 = wheelMinDensity;
   if(wheel_density_2<wheelMinDensity) wheel_density_2 = wheelMinDensity;
-  var wheel_vertex_1 = 0;
-  var wheel_vertex_2 = 1;
-  for(var i=1; i<8; i++) {
-  	if(wheel_vertex_vote1[i]>wheel_vertex_vote1[wheel_vertex_1] && wheel_vertex_2!=i) wheel_vertex_1 = i;
-  	if(wheel_vertex_vote2[i]>wheel_vertex_vote2[wheel_vertex_2] && wheel_vertex_1!=i) wheel_vertex_2 = i;
-  }
+  var wheel_vertex_1 = genome[0].wheel_vertex_1;
+  var wheel_vertex_2 = genome[1].wheel_vertex_2;
+  //for(var i=1; i<8; i++) {
+  //	if(wheel_vertex_vote1[i]>wheel_vertex_vote1[wheel_vertex_1] && wheel_vertex_2!=i) wheel_vertex_1 = i;
+  //	if(wheel_vertex_vote2[i]>wheel_vertex_vote2[wheel_vertex_2] && wheel_vertex_1!=i) wheel_vertex_2 = i;
+  //}
   if(chassis_density>chassisMaxDensity) chassis_density = chassisMaxDensity;
   if(chassis_density<chassisMinDensity) chassis_density = chassisMinDensity;
   if(vertex_list_1>chassisMaxAxis) vertex_list_1 = chassisMaxAxis;
@@ -985,6 +985,7 @@ function cw_resetPopulation() {
   cw_graphTop = new Array();
   cw_graphElite = new Array();
   cw_graphAverage = new Array();
+  geneId = 0;
   lastmax = 0;
   lastaverage = 0;
   lasteliteaverage = 0;
