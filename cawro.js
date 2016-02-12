@@ -22,7 +22,7 @@ var minimapcamera = document.getElementById("minimapcamera").style;
 
 var graphcanvas = document.getElementById("graphcanvas");
 var graphctx = graphcanvas.getContext("2d");
-var graphheight = 250;
+var graphheight = 500;
 var graphwidth = 400;
 
 var minimapcanvas = document.getElementById("minimap");
@@ -31,7 +31,7 @@ var minimapscale = 3;
 var minimapfogdistance = 0;
 var fogdistance = document.getElementById("minimapfog").style;
 
-var generationSize = 20;
+var generationSize = 50;
 var cw_carArray = new Array();
 var cw_carGeneration = new Array();
 var cw_carScores = new Array();
@@ -40,7 +40,7 @@ var cw_graphTop = new Array();
 var cw_graphElite = new Array();
 var cw_graphAverage = new Array();
 
-var gen_champions = 1;
+var gen_champions = 0;
 var gen_parentality = 0.2;
 var gen_mutation = 0.05;
 var mutation_range = 1;
@@ -54,13 +54,13 @@ var world;
 
 var zoom = 70;
 
-var mutable_floor = false;
+var mutable_floor = true;
 
 var maxFloorTiles = 200;
 var cw_floorTiles = new Array();
 var last_drawn_tile = 0;
 
-var groundPieceWidth = 1.5;
+var groundPieceWidth = 2.5;
 var groundPieceHeight = 0.15;
 
 var chassisMaxAxis = 1.1;
@@ -571,6 +571,10 @@ function cw_setMutation(mutation) {
 
 function cw_setMutationRange(range) {
   mutation_range = parseFloat(range);
+}
+
+function cw_setGenerationSize(range) {
+  generationSize = parseFloat(range);
 }
 
 function cw_setMutableFloor(choice) {
